@@ -1,4 +1,4 @@
-# ststem
+# system
 
 ## Project setup
 ```
