@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { login } from '../components/http/login'
 export default {
     props: {
 
@@ -32,7 +33,7 @@ export default {
         return {
         formLabelAlign: {
           name: '',
-          pwd: '',
+          pwd: "",
         },
         rules: {
           name: [
@@ -41,35 +42,30 @@ export default {
           ],
           pwd: [
             { required: true, message: '请输入密码', trigger: 'blur' },
-            { min: 5, max: 11, message: '长度在 5 到 11 个字符', trigger: 'blur' }
+            { min: 6, max: 6, message: '长度在 6个字符', trigger: 'blur' }
           ],
         },
     
         };
     },
     methods: {
-        submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        submitForm(formLabelAlign) {
+    
+        this.$refs[formLabelAlign].validate((valid) => {
           if (valid) {
             this.$message({
                 message: '登陆成功',
                 type: 'success',
                 duration:1000,
                 onClose:()=>{
-              
-                //   this.axios.post('/api/login', {
-                //       username:this.formLabelAlign.name,
-                //       password: this.formLabelAlign.pwd
-                //     })
-                //     .then(response=> {
-                //       console.log(response)
-                //       sessionStorage.setItem('token',response.data.token)
-                //       this.$router.push('/about')
-                //     })
-                //     .catch(function (error) {
-                //       console.log(error);
-                //     });
-                          
+                 login(this.formLabelAlign.name,this.formLabelAlign.pwd).then(
+                    res=>{
+                        sessionStorage.setItem('token',res.data.data.token)
+                        console.log(res.data.data,res.data.data.token)
+                        this.$router.push('/')
+                    }
+                )
+  
                 }
               });
           } else {
