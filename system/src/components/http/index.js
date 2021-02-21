@@ -10,9 +10,8 @@ export default function(config){
     instance.interceptors.request.use(function (config) {
       // 在发送请求之前做些什么
       console.log(config)
-      let token = sessionStorage.getItem('token')
       if(config.url == '/login') return config;
-      config.headers['token'] = token
+      config.headers.Authorization = window.sessionStorage.getItem('token')
       return config;
     }, function (error) {
       // 对请求错误做些什么

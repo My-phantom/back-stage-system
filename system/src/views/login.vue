@@ -32,8 +32,8 @@ export default {
     data() {
         return {
         formLabelAlign: {
-          name: '',
-          pwd: "",
+          name:'admin',
+          pwd: "123456",
         },
         rules: {
           name: [
@@ -62,7 +62,7 @@ export default {
                     res=>{
                         sessionStorage.setItem('token',res.data.data.token)
                         console.log(res.data.data,res.data.data.token)
-                        this.$router.push('/')
+                        this.$router.push('/home')
                     }
                 )
   

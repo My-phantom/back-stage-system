@@ -1,0 +1,37 @@
+{
+  "id": "2379940",
+  "name": "houtai",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "688096",
+      "name": "商品 购物袋2",
+      "font_class": "shangpingouwudai2",
+      "unicode": "e789",
+      "unicode_decimal": 59273
+    },
+    {
+      "icon_id": "848564",
+      "name": "dingdan",
+      "font_class": "danju",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "6446344",
+      "name": "方块",
+      "font_class": "tianchongxing-",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "13819257",
+      "name": "SHUJU 5",
+      "font_class": "SHUJU",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    }
+  ]
+}
