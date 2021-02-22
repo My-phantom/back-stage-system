@@ -7,8 +7,41 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/home',
-    name: 'Home',
-    component: Home
+    component: Home,
+    children:[
+      {
+        path:'users',
+        component:() => import('../views/user/user.vue')
+      },
+      {
+        path:'roles',
+        component:() => import('../views/authority/role.vue')
+      },
+      {
+        path:'rights',
+        component:() => import('../views/authority/list.vue')
+      },
+      {
+        path:'goods',
+        component:() => import('../views/shop/shop_list.vue')
+      },
+      {
+        path:'params',
+        component:() => import('../views/shop/classify.vue')
+      },
+      {
+        path:'categories',
+        component:() => import('../views/shop/shop_class.vue')
+      },
+      {
+        path:'orders',
+        component:() => import('../views/order/order.vue')
+      },
+      {
+        path:'reports',
+        component:() => import('../views/data/data.vue')
+      },
+    ]
   },
   {
     path:'/login',

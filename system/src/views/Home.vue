@@ -13,13 +13,15 @@
         class="el-menu-vertical-demo"
         background-color="#333744"
         text-color="#fff"
-        active-text-color="#ffd04b">
-        <el-submenu :index="item.id" v-for="(item) in menus"  :key="item.icon">
+        active-text-color="#ffd04b"
+        :router="path"
+        >
+        <el-submenu :index="String(item.id)" v-for="(item) in menus"  :key="item.icon">
           <template slot="title">
             <i :class="item.icon"></i>
             <span class="name">{{item.authName}}</span>
           </template>
-          <el-menu-item :index="ite.id" v-for="(ite,index) in item.children" :key="index">
+          <el-menu-item :index=" '/home/'+ ite.path " v-for="(ite,index) in item.children" :key="index"  >
             <i :class="ite.icon"></i>
             <span>{{ite.authName}}</span>
           </el-menu-item>
@@ -29,6 +31,7 @@
   </el-aside>
           <el-main>
             Welcome
+          <router-view></router-view>
           </el-main>
         </el-container>
     </el-container>
@@ -43,7 +46,9 @@ export default {
     },
     data() {
         return {
-          menus:[
+          path:true,
+          menus:[],
+          menu:[
             {authName:"用户管理",id:"1", icon:' el-icon-s-custom' ,children:[
               {authName:"用户列表",id:"1-1", icon:'el-icon-menu'}
             ]},
@@ -67,7 +72,7 @@ export default {
     },
     methods: {
       del(){
-          sessionStorage.removeItem('token')
+        sessionStorage.removeItem('token')
         window.location.reload()
       }
     },  
@@ -77,6 +82,7 @@ export default {
     mounted(){
       user().then(res =>{
         console.log(res)
+        this.menus = res.data.data
       })
     }
 };

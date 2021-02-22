@@ -60,6 +60,7 @@ export default {
                 onClose:()=>{
                  login(this.formLabelAlign.name,this.formLabelAlign.pwd).then(
                     res=>{
+        
                         sessionStorage.setItem('token',res.data.data.token)
                         console.log(res.data.data,res.data.data.token)
                         this.$router.push('/home')
